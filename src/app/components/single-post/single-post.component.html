@@ -1,0 +1,42 @@
+<h2 class="fs-1 fw-bold text-bg-primary rounded-2">TUTTI I POST</h2>
+<div *ngFor="let post of posts" class="card my-2">
+  <div class="card-body">
+    <h5 class="card-title">{{ post.title }}</h5>
+    <p class="card-text">{{ post.body }}</p>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{ post.tags[0] }}</li>
+      <li class="list-group-item">{{ post.tags[1] }}</li>
+      <li class="list-group-item">{{ post.tags[2] }}</li>
+    </ul>
+    <div class="card-body">
+      <button [routerLink]="['/post-detail', post.id]" class="btn btn-info">
+        Details
+      </button>
+      <h5 class="pt-5">sezione modifica post</h5>
+      <form (ngSubmit)="onSubmit(post)" #postForm="ngForm">
+        <div class="mb-3">
+          <label for="title" class="form-label">Titolo</label>
+          <input
+            type="text"
+            id="title"
+            class="form-control"
+            [(ngModel)]="post.title"
+            name="title"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="body" class="form-label">Corpo</label>
+          <textarea
+            id="body"
+            class="form-control"
+            [(ngModel)]="post.body"
+            name="body"
+            required
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Modifica</button>
+      </form>
+    </div>
+  </div>
+</div>

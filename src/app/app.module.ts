@@ -8,10 +8,20 @@ import { HomeComponent } from './components/home/home.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { ActivePostComponent } from './components/active-post/active-post.component';
 import { InactivePostComponent } from './components/inactive-post/inactive-post.component';
+import { SinglePostComponent } from './components/single-post/single-post.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, HomeComponent, PostDetailComponent, ActivePostComponent, InactivePostComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    HomeComponent,
+    PostDetailComponent,
+    ActivePostComponent,
+    InactivePostComponent,
+    SinglePostComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
