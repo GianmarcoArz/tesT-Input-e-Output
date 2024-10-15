@@ -40,6 +40,9 @@
           <button [routerLink]="['/post-detail', post.id]" class="btn btn-info">
             Details
           </button>
+          <button (click)="logPostId(post.id)" class="btn btn-danger">
+            Selection ID
+          </button>
         </div>
       </div>
     </div>

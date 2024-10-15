@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Post } from '../../interface/post';
+import { PostService } from '../../service/post.service';
 
 @Component({
   selector: 'app-home',
@@ -11,19 +12,14 @@ export class HomeComponent {
   post4: Post[] = [];
   numeroArticolo: number = 0;
 
+  constructor(private postSvc: PostService) {}
+
   ngOnInit() {
-    fetch('db.json')
-      .then((data) => {
-        return data.json();
-      })
-      .then((result) => {
-        this.posts = result.posts;
-        console.log(this.posts);
-        this.numeroArticolo = Math.floor(Math.random() * 30);
-        for (let i = 0; i < 4; i++) {
-          this.post4.push(this.posts[i]);
-        }
-      })
-      .catch((err) => console.log(err));
+    this.posts = this.postSvc.getAllPost();
+    this.post4 = this.posts.slice(0, 4);
+  }
+  logPostId(id: number) {
+    const post = this.postSvc.getPostById(id);
+    console.log(post);
   }
 }
